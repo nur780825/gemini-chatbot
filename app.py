@@ -20,9 +20,9 @@ def chat():
     return jsonify({"error": "No message provided"}), 400
 
   try:
-    # জেমিনি মডেল আপডেট করে gemini-3.8-flash দেওয়া হলো
+    # আরও স্থিতিশীল gemini-1.5-flash মডেল ব্যবহার করা হলো
     response = client.models.generate_content(
-        model="gemini-3.8-flash",
+        model="gemini-1.5-flash",
         contents=user_message,
     )
     bot_reply = response.text
