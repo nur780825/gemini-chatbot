@@ -22,7 +22,7 @@
     <div class="chat-container">
         <div class="chat-header">Gemini AI Chatbot</div>
         <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">হ্যালো! আমি আপনার জেমিনি এআই সহকারী। আজ আপনাকে কীভাবে সাহায্য করতে পারি?</div>
+            <div class="message bot-message">হ্যালো! আজ আপনাকে কীভাবে সাহায্য করতে পারি?</div>
         </div>
         <div class="chat-input">
             <input type="text" id="userInput" placeholder="আপনার বার্তা এখানে লিখুন..." onkeypress="handleKeyPress(event)">
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <script>
+   <script>
         async function sendMessage() {
             const inputField = document.getElementById("userInput");
             const message = inputField.value.trim();
@@ -52,10 +52,11 @@
                 if (data.reply) {
                     chatMessages.innerHTML += `<div class="message bot-message">${data.reply}</div>`;
                 } else {
-                    chatMessages.innerHTML += `<div class="message bot-message">দুঃখিত, কোনো সমস্যা হয়েছে।</div>`;
+                    // এখানে আসল পাইথন বা জেমিনির এরর মেসেজটি স্ক্রিনে দেখাবে
+                    chatMessages.innerHTML += `<div class="message bot-message" style="color: red;">ত্রুটি: ${data.error || 'অজানা সমস্যা'}</div>`;
                 }
             } catch (error) {
-                chatMessages.innerHTML += `<div class="message bot-message">সার্ভার কানেকশনে ত্রুটি দেখা দিয়েছে।</div>`;
+                chatMessages.innerHTML += `<div class="message bot-message" style="color: red;">সার্ভার কানেকশনে ত্রুটি।</div>`;
             }
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
